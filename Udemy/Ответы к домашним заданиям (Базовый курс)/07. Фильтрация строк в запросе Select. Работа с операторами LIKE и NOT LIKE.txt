@@ -1,0 +1,31 @@
+
+ƒомашнее задание к уроку #7
+https://www.youtube.com/watch?v=peuQL60RFxg
+
+«адание необходимо выполн€ть в схеме HR.
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+1. »спользу€ предложение WHERE и оператор LIKE, оставьте только те строки, в которых значение пол€ EMAIL содержит сочетание букв AV.
+
+SELECT * FROM employees
+where EMAIL like '%AV%';
+
+
+2. »спользу€ предложение WHERE и операторы LIKE и AND, оставьте только те строки, в которых значение пол€ JOB_ID содержит слово CLERK и им€ сотрудника (поле LAST_NAME) начинаетс€ на английскую букву "B".
+
+SELECT * FROM employees
+where 
+	JOB_ID like '%CLERK%'
+	and LAST_NAME like 'B%';
+
+
+3. »спользу€ предложение WHERE и оператор LIKE, найдите наименовани€ всех таблиц, пол€ которых содержат слово "EMPLOYEE".
+
+SELECT table_name, column_name, data_type FROM user_tab_columns
+WHERE COLUMN_NAME like '%EMPLOYEE%';
+
+альтернативный вариант:
+SELECT distinct table_name FROM user_tab_columns
+WHERE COLUMN_NAME like '%EMPLOYEE%';

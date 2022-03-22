@@ -1,0 +1,40 @@
+
+ƒомашнее задание к уроку #18
+«адание необходимо выполн€ть в схеме HR
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+1. »спользу€ соединение таблиц LEFT JOIN добавьте в таблицу EMPLOYEES пол€: Ќазвание должности (см. в таблице JOBS), Ќазвание департамента (см. в таблице DEPARTMENTS).
+
+select 
+    a.*, b.JOB_TITLE, c.DEPARTMENT_NAME
+from 
+    EMPLOYEES a 
+    left outer join JOBS b on a.JOB_ID = b.JOB_ID
+    left outer join DEPARTMENTS c on a.DEPARTMENT_ID = c.DEPARTMENT_ID
+
+    
+2. SQL запрос, полученный в задании #1, измените таким образом, чтобы результат запроса содержал только те строки, код департамента по которым (поле DEPARTMENT_ID) находитс€ в диапазоне от 10 до 40 (включительно).
+
+select 
+    a.*, b.JOB_TITLE, c.DEPARTMENT_NAME
+from 
+    EMPLOYEES a 
+    left outer join JOBS b on a.JOB_ID = b.JOB_ID
+    left outer join DEPARTMENTS c on a.DEPARTMENT_ID = c.DEPARTMENT_ID
+where
+    a.DEPARTMENT_ID between 10 and 40
+
+
+3. SQL запрос, полученный в задании #2, измените таким образом, чтобы результат запроса содержал только следующие пол€: EMPLOYEE_ID, FIRST_NAME, LAST_NAME, JOB_ID, JOB_TITLE, DEPARTMENT_ID, DEPARTMENT_NAME.
+
+select 
+    a.EMPLOYEE_ID, a.FIRST_NAME, a.LAST_NAME, a.JOB_ID, b.JOB_TITLE, a.DEPARTMENT_ID, c.DEPARTMENT_NAME
+from 
+    EMPLOYEES a 
+    left outer join JOBS b on a.JOB_ID = b.JOB_ID
+    left outer join DEPARTMENTS c on a.DEPARTMENT_ID = c.DEPARTMENT_ID
+where
+    a.DEPARTMENT_ID between 10 and 40
+

@@ -1,0 +1,23 @@
+
+Домашнее задание к уроку #12
+Задание необходимо выполнять в схеме HR, таблица LOCATIONS.
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+1. Сформируйте агрегированные данные по полю COUNTRY_ID и количеству значений в поле STREET_ADDRESS. При этом необходимо соблюсти два условия:
+а) Значения поля LOCATION_ID должны быть больше 2000.
+б) Количество значений в поле STREET_ADDRESS должно быть больше либо равно 2.
+
+select COUNTRY_ID, count(STREET_ADDRESS)
+from locations
+where location_id > 2000
+group by COUNTRY_ID
+having count(STREET_ADDRESS) >= 2
+
+
+2. Выведите все уникальные значения из поля STATE_PROVINCE, отсортированные в порядке возрастания (от A до Z). При этом чтобы значения NULL отображались в самом начале списка.
+
+select distinct STATE_PROVINCE
+from LOCATIONS
+order by STATE_PROVINCE asc nulls first 

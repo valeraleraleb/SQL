@@ -1,0 +1,68 @@
+
+Домашнее задание к уроку #19
+Задание необходимо выполнять в схеме HR
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+1. Используя соединение таблиц LEFT JOIN добавьте в таблицу DEPARTMENTS количество сотрудников по каждому из указанных департаментов. Список сотрудников с привязкой к департаментам можно найти в таблице EMPLOYEES.
+select 
+    a.*, count(b.EMPLOYEE_ID) as COUNT_EMPLOYEES
+from 
+    DEPARTMENTS a
+    left outer join EMPLOYEES b on a.DEPARTMENT_ID = b.DEPARTMENT_ID
+group by
+    a.DEPARTMENT_ID, a.DEPARTMENT_NAME, a.MANAGER_ID, a.LOCATION_ID
+;   
+
+
+2. Из таблицы LOCATIONS выберите два поля: LOCATION_ID и CITY. К полученному результату, используя соединение RIGHT JOIN, добавьте наименования департаментов из таблицы DEPARTMENTS. Результат запроса отсортируйте по полю LOCATION_ID.
+select
+    a.LOCATION_ID, a.CITY, b.department_name
+from 
+    LOCATIONS a
+    right outer join DEPARTMENTS b on a.LOCATION_ID = b.LOCATION_ID
+order by 
+    a.LOCATION_ID
+;
+
+
+
+3. Задание состоит из 4-х последовательных этапов.
+а) Из таблицы EMPLOYEES выберите данные только по полям: EMPLOYEE_ID, FIRST_NAME, LAST_NAME, JOB_ID, SALARY, DEPARTMENT_ID.
+select 
+    EMPLOYEE_ID, FIRST_NAME, LAST_NAME, JOB_ID, SALARY, DEPARTMENT_ID
+from 
+    EMPLOYEES
+    
+б) К результату, полученному на этапе А, добавьте после поля SALARY следующие поля из таблицы JOBS: MIN_SALARY, MAX_SALARY.
+select 
+    a.EMPLOYEE_ID, a.FIRST_NAME, a.LAST_NAME, a.JOB_ID, 
+    a.SALARY, b.MIN_SALARY, b.MAX_SALARY,
+    a.DEPARTMENT_ID
+from 
+    EMPLOYEES a
+    left outer join JOBS b on a.JOB_ID = b.JOB_ID
+   
+в) К результату, полученному на этапе Б, после поля DEPARTMENT_ID добавьте поле DEPARTMENT_NAME из таблицы DEPARTMENTS.
+select 
+    a.EMPLOYEE_ID, a.FIRST_NAME, a.LAST_NAME, a.JOB_ID, 
+    a.SALARY, b.MIN_SALARY, b.MAX_SALARY,
+    a.DEPARTMENT_ID, c.DEPARTMENT_NAME
+from 
+    EMPLOYEES a
+    left outer join JOBS b on a.JOB_ID = b.JOB_ID
+    left outer join DEPARTMENTS c on a.DEPARTMENT_ID = c.DEPARTMENT_ID
+
+г) Из результата, полученного на этапе В, оставьте только те строки, где фактическая зарплата сотрудника (SALARY) в два или более раза превышает минимально возможную зарплату по данной позиции (MIN_SALARY).
+select 
+    a.EMPLOYEE_ID, a.FIRST_NAME, a.LAST_NAME, a.JOB_ID, 
+    a.SALARY, b.MIN_SALARY, b.MAX_SALARY,
+    a.DEPARTMENT_ID, c.DEPARTMENT_NAME
+from 
+    EMPLOYEES a
+    left outer join JOBS b on a.JOB_ID = b.JOB_ID
+    left outer join DEPARTMENTS c on a.DEPARTMENT_ID = c.DEPARTMENT_ID
+where 
+    a.SALARY >= (b.MIN_SALARY * 2)
+

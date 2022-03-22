@@ -1,0 +1,34 @@
+
+ƒомашнее задание к уроку #8
+https://www.youtube.com/watch?v=5P0a5SODbEQ
+
+«адание необходимо выполн€ть в схеме HR, таблица DEPARTMENTS.
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+1. »спользу€ предложение WHERE, отобразите список всех департаментов (поле DEPARTMENT_NAME), у которых не определен руководитель (значение в поле MANAGER_ID = NULL).
+
+SELECT department_name
+FROM departments
+where manager_id is null
+
+
+2. »спользу€ предложение WHERE, отобразите список всех департаментов (поле DEPARTMENT_NAME), у которых определен руководитель (значение в поле MANAGER_ID <> NULL).
+
+SELECT department_name
+FROM departments
+where manager_id is not null
+
+
+3. »спользу€ предложение WHERE и функцию NVL, отобразите департаменты (поле DEPARTMENT_NAME) и их руководителей (поле MANAGER_ID) при следующих требовани€х:
+- ID департамента равен  любому из указанных значений: 10, 50, 120, 200
+- ¬озможные значени€ NULL в поле MANAGER_ID необходимо заменить на число 999
+
+SELECT department_name, nvl(manager_id,999) as manager_id
+FROM departments
+where department_id in (10, 50, 120, 200)
+
+
+
+

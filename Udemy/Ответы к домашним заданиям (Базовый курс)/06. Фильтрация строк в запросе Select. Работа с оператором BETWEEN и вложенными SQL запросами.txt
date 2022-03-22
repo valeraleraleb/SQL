@@ -1,0 +1,31 @@
+
+Домашнее задание к уроку #6
+https://www.youtube.com/watch?v=wZSLOKnmqEc
+
+Задание необходимо выполнять в схеме HR, таблицы EMPLOYEES и DEPARTMENTS.
+Не забудьте, для корректной работы запросов, содержащих значения дата, даты должны быть обрамлены в одиночные кавычки.
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+1. Используя предложение WHERE и оператор BETWEEN, оставьте только те строки, в которых значение поля SALARY попадает в диапазон от 10 000 до 20 000.
+
+select * from employees
+where salary BETWEEN 10000 and 20000;
+
+
+2. Используя предложение WHERE и оператор BETWEEN, оставьте только те строки, в которых значение поля SALARY попадает в диапазон от 1 000 до 10 000 и дата приема сотрудника на работу попадает в диапазон от 01.01.07 до 30.06.07
+
+select * from employees
+where salary BETWEEN 1000 and 10000
+and HIRE_DATE BETWEEN '01.01.07' and '30.06.07';
+
+
+3. Используя вложенный подзапрос в предложении WHERE, выведите из таблицы EMPLOYEES все строки, LOCATION_ID департамента которых в таблице DEPARTMENTS больше или равно 2600.
+
+SELECT * FROM employees
+WHERE department_id in 
+(
+     SELECT department_id FROM departments
+     where location_id >= 2600
+);

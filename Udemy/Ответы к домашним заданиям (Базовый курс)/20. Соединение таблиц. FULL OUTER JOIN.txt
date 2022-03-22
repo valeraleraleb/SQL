@@ -1,0 +1,44 @@
+
+Домашнее задание к уроку #20
+Задание необходимо выполнять в схеме HR
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+
+!!!Поправить задание 1, чтобы вместо "CITY содержит две англ. буквы О" было "CITY содержит две или более англ. буквы О". Иначе lower(a.CITY) like lower('%o%o%') не сработает и нужно будет использовать: REGEXP_COUNT(LOWER(city),'o')=2
+
+Используя соединение FULL JOIN, объедините две таблицы: LOCATIONS и DEPARTMENTS.
+При этом:
+1. Из таблицы LOCATIONS используйте только поля: LOCATION_ID и CITY. При этом поле LOCATION_ID при выводе финального запроса переименуйте в 'LOCATION_ID_SOURCE'. Также задайте ограничение по таблице LOCATIONS: CITY содержит две англ. буквы О (в любом регистре и в любом месте слова).
+2. Из таблицы DEPARTMENTS используйте только поля: DEPARTMENT_ID, DEPARTMENT_NAME и LOCATION_ID. Также задайте ограничение по таблице DEPARTMENTS: DEPARTMENT_ID чтобы попадал в диапазон от 10 до 50 (включительно).
+3. Связь таблиц LOCATIONS и DEPARTMENTS настройте через поле LOCATION_ID.
+4. Полученную в результате запроса таблицу отсортируйте по полю DEPARTMENT_ID (по возрастанию).
+
+
+--правильный вариант
+select 
+    a.LOCATION_ID as LOCATION_ID_SOURCE, a.CITY, b.*
+from 
+    (select LOCATION_ID, CITY from LOCATIONS where lower(CITY) like lower('%o%o%')) a
+    full outer join (select DEPARTMENT_ID, DEPARTMENT_NAME, LOCATION_ID from DEPARTMENTS where DEPARTMENT_ID between 10 and 50) b on a.LOCATION_ID = b.LOCATION_ID
+order by 
+    b.DEPARTMENT_ID asc
+;
+
+
+--НЕ правильный, но допустимый, вариант
+select 
+    a.LOCATION_ID as LOCATION_ID_SOURCE, a.CITY, b.DEPARTMENT_ID, b.DEPARTMENT_NAME, b.LOCATION_ID
+from 
+    LOCATIONS a
+    full outer join DEPARTMENTS b on a.LOCATION_ID = b.LOCATION_ID
+where
+    lower(a.CITY) like lower('%o%o%')
+    and b.DEPARTMENT_ID between 10 and 50
+order by 
+    b.DEPARTMENT_ID asc
+;
+
+      
+        

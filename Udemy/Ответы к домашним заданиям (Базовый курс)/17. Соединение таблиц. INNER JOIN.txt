@@ -1,0 +1,35 @@
+
+Домашнее задание к уроку #17
+Задание необходимо выполнять в схеме HR
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+1. Используя соединение таблиц INNER JOIN оставьте в таблице EMPLOYEES только те строки, которые есть в таблице JOBS_TEST (соединение по ключу JOB_ID).
+
+select a.*
+from 
+    EMPLOYEES a 
+    inner join JOBS_TEST b on a.JOB_ID = b.JOB_ID
+
+
+2. SQL запрос, полученный из задания #1, измените таким образом, чтобы из полученного ранее результата оставались только те строки, в которых наименование должности содержит слово "Sales".
+
+select a.*
+from 
+    EMPLOYEES a 
+    inner join JOBS_TEST b on a.JOB_ID = b.JOB_ID
+where
+    b.JOB_TITLE like '%Sales%'
+
+
+3. К SQL запросу, полученному в задании #2, добавьте еще одно предложение INNER JOIN только уже со связью с таблицей DEPARTMENTS. Задача - в предложении SELECT, помимо существующих полей, вывести также поле DEPARTMENT_NAME (из таблицы DEPARTMENTS). Объединение таблиц необходимо осуществлять по полю DEPARTMENT_ID. 
+
+select a.*, c.DEPARTMENT_NAME
+from 
+    EMPLOYEES a 
+    inner join JOBS_TEST b on a.JOB_ID = b.JOB_ID
+    inner join DEPARTMENTS c on a.DEPARTMENT_ID = c.DEPARTMENT_ID
+where
+    b.JOB_TITLE like '%Sales%'
+    lower(b.JOB_TITLE) like '%sales%'

@@ -1,0 +1,38 @@
+
+Домашнее задание к уроку #10
+https://www.youtube.com/watch?v=xxxxxxxxxxxx
+
+Задание необходимо выполнять в схеме HR, таблица EMPLOYEES.
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+1. Используя функцию AVG, посчитайте среднюю зарплату сотрудников. Данные необходимо сгруппировать по полю DEPARTMENT_ID.
+
+SELECT DEPARTMENT_ID, avg(SALARY) FROM EMPLOYEES
+group by DEPARTMENT_ID;
+
+
+2. Используя функцию SUM, посчитайте сумму зарплаты сотрудников, номер телефона которых (поле PHONE_NUMBER) содержит последовательность цифр "1346".
+При этом также необходимо:
+а) сгруппировать данные по фамилии и имени сотрудников,
+б) полученный результат отсортировать по фамилии сотрудников.
+
+SELECT LAST_NAME, FIRST_NAME, sum(SALARY) FROM EMPLOYEES
+where PHONE_NUMBER like '%1346%'
+group by FIRST_NAME, LAST_NAME
+order by LAST_NAME;
+
+!!! Поправить задание #2. Расчет sum в данном случае бесполезен, т.к. строки и так уникальные.
+
+ 
+3. С помощью функций MIN и MAX найдите минимальную и максимальную дату приема сотрудника на работу (поле HIRE_DATE) в департаменте #50 (поле DEPARTMENT_ID).
+
+SELECT min(HIRE_DATE), max(HIRE_DATE) FROM EMPLOYEES
+where DEPARTMENT_ID = 50;
+
+
+4. С помощью функции MAX найдите последнюю по алфавиту фамилию сотрудника (поле LAST_NAME).
+
+SELECT max(LAST_NAME) FROM EMPLOYEES;
+

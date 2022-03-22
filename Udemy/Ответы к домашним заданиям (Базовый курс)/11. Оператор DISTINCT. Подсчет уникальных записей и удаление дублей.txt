@@ -1,0 +1,28 @@
+
+Домашнее задание к уроку #11
+https://www.youtube.com/watch?v=tPv5ZSzPWc4
+
+Задание необходимо выполнять в схеме HR, таблица LOCATIONS.
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+1. Используя оператор DISTINCT, посчитайте количество уникальных городов (поле CITY).
+
+SELECT count(distinct city)
+FROM locations;
+
+
+2. Используя оператор DISTINCT, выведите уникальные значения полей CITY и COUNTRY_ID. Отображаемые данные при этом необходимо отсортировать по наименованию городов в порядке убывания (от Z до A).
+
+SELECT distinct city, country_id
+FROM locations
+order by city desc;
+
+ 
+3. Используя оператор DISTINCT, выведите уникальные значения поля COUNTRY_ID при условии, что значения поля STATE_PROVINCE не равны NULL. Отображаемые значения поля COUNTRY_ID необходимо отсортировать по наименованию в порядке возрастания (от A до Z).
+
+SELECT distinct country_id
+FROM locations
+where state_province is not null
+order by country_id;

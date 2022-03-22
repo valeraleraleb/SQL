@@ -1,0 +1,51 @@
+
+Домашнее задание к уроку #15
+Задание необходимо выполнять в схеме "Тестовое подключение"
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+1. Создайте таблицу EMPLOYEE_INFO со следующими полями:
+EMPLOYEE_ID - числовое поле
+FIRST_NAME - текстовое поле (длина 20 символов)
+LAST_NAME - текстовое поле (длина 20 символов)
+PHONE_NUMBER - текстовое поле (длина 20 символов)
+HIRE_DATE - поле с датой
+
+Если таблица EMPLOYEE_INFO уже существует, допишите ваш произвольный уникальный идентификатор перед названием таблицы.
+
+
+--drop table EMPLOYEE_INFO purge;
+create table EMPLOYEE_INFO
+    ( 
+        EMPLOYEE_ID     number,
+        FIRST_NAME 	    varchar2(30),
+        LAST_NAME 	    varchar2(30),
+        PHONE_NUMBER    varchar2(30),
+        HIRE_DATE 	    date
+    )
+;
+
+
+2. Добавьте в таблицу, созданную в пункте #1, следующие значения:
+LAST_NAME: Иванов
+FIRST_NAME: Иван
+PHONE_NUMBER: 111.222.333
+HIRE_DATE: 01.10.2019
+EMPLOYEE_ID: 10
+
+insert INTO EMPLOYEE_INFO (EMPLOYEE_ID, FIRST_NAME, LAST_NAME, PHONE_NUMBER, HIRE_DATE) 
+values (10, 'Иван', 'Иванов', '111.222.333', '01.10.2019');
+commit;
+
+
+3. Добавьте в таблицу, созданную в пункте #1, значения одноименных полей из таблицы EMPLOYEES (схема HR), у которых поле PHONE_NUMBER содержит следующий набор цифр "5.123.4".
+
+
+insert into EMPLOYEE_INFO (EMPLOYEE_ID, FIRST_NAME, LAST_NAME, PHONE_NUMBER, HIRE_DATE) 
+select EMPLOYEE_ID, FIRST_NAME, LAST_NAME, PHONE_NUMBER, HIRE_DATE
+from HR.EMPLOYEES
+where PHONE_NUMBER like '%5.123.4%';
+commit;
+
+

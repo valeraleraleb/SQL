@@ -1,0 +1,27 @@
+SELECT * FROM departments;
+
+SELECT * FROM employees
+WHERE department_id in (30, 90, 100);
+
+SELECT * FROM departments
+where DEPARTMENT_NAME in ('Purchasing', 'Executive', 'Finance');
+
+SELECT * FROM employees
+WHERE department_id in 
+(
+     SELECT * FROM departments
+     where DEPARTMENT_NAME in ('Purchasing', 'Executive', 'Finance')
+);
+
+SELECT * FROM employees
+WHERE department_id in 
+(
+     SELECT department_id FROM departments
+     where DEPARTMENT_NAME in ('Purchasing', 'Executive', 'Finance')
+);
+
+SELECT * FROM employees
+where HIRE_DATE BETWEEN '01.06.05' and '31.08.05';
+
+SELECT * FROM employees
+where employee_id BETWEEN 100 and 110;

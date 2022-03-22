@@ -1,0 +1,56 @@
+
+ƒомашнее задание к уроку #5.
+
+«адание необходимо выполн€ть в схеме HR, таблица EMPLOYEES.
+Ќе забудьте, дл€ корректной работы запросов, содержащих текстовые значени€, текст должен быть обрамлен в одиночные кавычки.
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+1. ¬ыведите первые 20 строк таблицы.
+
+SELECT * FROM employees 
+WHERE rownum <= 20
+
+
+2. »спользу€ предложение WHERE оставьте только те строки, в которых значение пол€ SALARY >= 15000
+
+SELECT * FROM employees 
+WHERE SALARY >= 15000
+
+
+3. »спользу€ оператор AND оставьте только те строки, в которых значение пол€ SALARY >= 10000 и значение пол€ JOB_ID = SA_MAN
+
+SELECT * FROM employees 
+WHERE SALARY >= 7500
+and JOB_ID = 'SA_MAN'
+
+
+4. »спользу€ оператор AND и OR оставьте только те строки, в которых соблюдено любое из указанных условий:
+	условие 1: поле JOB_ID равно IT_PROG 
+	условие 2: поле MANAGER_ID = 121 и JOB_ID = SH_CLERK
+
+SELECT * FROM employees 
+WHERE 
+    JOB_ID = 'IT_PROG'
+    or (MANAGER_ID = 121 and JOB_ID = 'SH_CLERK')
+	
+
+5. ¬ыведите пол€ EMPLOYEE_ID, FIRST_NAME, LAST_NAME, SALARY, MANAGER_ID, DEPARTMENT_ID, оставив только строки, в которых значение LAST_NAME совпадает с любым из указанных: King, Austin, Faviet, Popp, Ladwig, Seo, Rajs
+
+SELECT EMPLOYEE_ID, FIRST_NAME, LAST_NAME, SALARY, MANAGER_ID, DEPARTMENT_ID
+FROM EMPLOYEES
+where LAST_NAME in ('King', 'Austin', 'Faviet', 'Popp', 'Ladwig', 'Seo', 'Rajs')
+
+
+6. ¬ыведите пол€ DEPARTMENT_ID, EMPLOYEE_ID, FIRST_NAME, LAST_NAME, оставив только строки, в которых значение DEPARTMENT_ID не равно: 30, 50, 60, 80, 90, 100
+
+SELECT DEPARTMENT_ID, EMPLOYEE_ID, FIRST_NAME, LAST_NAME FROM employees 
+where DEPARTMENT_ID not in (30, 50, 60, 80, 90, 100)
+
+
+7. ¬ыведите пол€ EMPLOYEE_ID, FIRST_NAME, LAST_NAME, SALARY, отсортировав полученный результат по полю SALARY по убыванию (зарплата от большего к меньшему). ѕри это значени€ полей FIRST_NAME и LAST_NAME должны быть отображены в верхнем регистре.
+
+SELECT EMPLOYEE_ID, upper(FIRST_NAME) as FIRST_NAME, upper(LAST_NAME) as LAST_NAME, SALARY FROM employees 
+order by SALARY desc
+
