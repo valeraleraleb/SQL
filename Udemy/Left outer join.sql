@@ -1,7 +1,7 @@
---Задание необходимо выполнять в схеме HR
-
---1. Используя соединение таблиц LEFT JOIN добавьте в таблицу EMPLOYEES поля: 
--- должности (см. в таблице JOBS), Название департамента (см. в таблице DEPARTMENTS).
+-- РќРµРѕР±С…РѕРґРёРјРѕ РІС‹РїРѕР»РЅРёС‚СЊ РІ СЃС…РµРјРµ HR
+-- РСЃРїРѕР»СЊР·СѓСЏ СЃРѕРµРґРёРЅРµРЅРёРµ LEFT JOIN, РґРѕР±Р°РІРёС‚СЊ РІ С‚Р°Р±Р»РёС†Сѓ EMPLOYEES:
+-- РќР°Р·РІР°РЅРёРµ РґРѕР»Р¶РЅРѕСЃС‚Рё (РёР· С‚Р°Р±Р»РёС†С‹ JOBS).
+-- РќР°Р·РІР°РЅРёРµ РѕС‚РґРµР»Р° (РёР· С‚Р°Р±Р»РёС†С‹ DEPARTMENTS).
 
 select a.employee_id, c.job_title, b.department_name
 from
@@ -10,8 +10,8 @@ from
     left outer join jobs c on a.job_id= c.job_id
 order by a.employee_id;
 
---2. SQL запрос, полученный в задании #1, измените таким образом, чтобы результат запроса содержал только те строки, код департамента по которым 
---(поле DEPARTMENT_ID) находится в диапазоне от 10 до 40 (включительно).
+--2. РќР° РѕСЃРЅРѕРІРµ SQL-Р·Р°РїСЂРѕСЃР° РёР· С€Р°РіР° 1, РґРѕР±Р°РІСЊС‚Рµ СѓСЃР»РѕРІРёРµ С„РёР»СЊС‚СЂР°С†РёРё:
+-- Р’РєР»СЋС‡РёС‚Рµ С‚РѕР»СЊРєРѕ С‚РµС… СЃРѕС‚СЂСѓРґРЅРёРєРѕРІ, С‡РµР№ DEPARTMENT_ID РЅР°С…РѕРґРёС‚СЃСЏ РІ РґРёР°РїР°Р·РѕРЅРµ РѕС‚ 10 РґРѕ 40 (РІРєР»СЋС‡РёС‚РµР»СЊРЅРѕ).
 
 select a.department_id, a.employee_id, c.job_title, b.department_name
 from
@@ -21,8 +21,8 @@ from
 where a.department_id between 10 and 40
 order by a.employee_id;
 
---3. SQL запрос, полученный в задании #2, измените таким образом, чтобы результат запроса содержал только следующие поля: EMPLOYEE_ID, FIRST_NAME, 
---LAST_NAME, JOB_ID, JOB_TITLE, DEPARTMENT_ID, DEPARTMENT_NAME
+--3. РќР° РѕСЃРЅРѕРІРµ SQL-Р·Р°РїСЂРѕСЃР° РёР· С€Р°РіР° 2, РґРѕР±Р°РІСЊС‚Рµ СЃРѕСЂС‚РёСЂРѕРІРєСѓ СЂРµР·СѓР»СЊС‚Р°С‚РѕРІ РїРѕ СЃР»РµРґСѓСЋС‰РёРј РїРѕР»СЏРј:
+-- EMPLOYEE_ID, FIRST_NAME, LAST_NAME, JOB_ID, JOB_TITLE, DEPARTMENT_ID, DEPARTMENT_NAME
 
 select a.employee_id, a.last_name, a.job_id, c.job_title, a.department_id, b.department_name
 from
