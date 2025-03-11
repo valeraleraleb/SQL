@@ -1,7 +1,7 @@
-select 'Любое текстовое значение' as TEST from dual;
-select 'Пример указания ''апострофов'' в тексте' as TEST from dual;
-select 'Пример указания двойных "кавычек" в тексте' as TEST from dual;
-select 'Пример соединения ' || 'двух тестовых значений' as TEST from dual;
+select 'РўРµРєСЃС‚ РґР»СЏ РїСЂРёРјРµСЂР°' as TEST from dual;
+select 'РўРµРєСЃС‚ СЃ РѕРґРёРЅР°СЂРЅС‹РјРё ''РєР°РІС‹С‡РєР°РјРё'' Рё РїСЂРѕР±РµР»Р°РјРё' as TEST from dual;
+select 'РўРµРєСЃС‚ СЃ РґРІРѕР№РЅС‹РјРё "РєР°РІС‹С‡РєР°РјРё" Рё РїСЂРѕР±РµР»Р°РјРё' as TEST from dual;
+select 'РўРµРєСЃС‚, РєРѕС‚РѕСЂС‹Р№ ' || 'РѕР±СЉРµРґРёРЅСЏРµС‚СЃСЏ СЃ РґСЂСѓРіРёРј С‚РµРєСЃС‚РѕРј' as TEST from dual;
 
 select 100 as TEST from dual;
 select '100' + 10 as TEST from dual; 
