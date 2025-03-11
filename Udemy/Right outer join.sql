@@ -23,7 +23,7 @@ order by location_id;
 -- Из таблицы EMPLOYEES выбрать поля: EMPLOYEE_ID, FIRST_NAME ,LAST_NAME, JOB_ID, SALARY, DEPARTMENT_ID
 -- Из таблицы JOBS, с использованием соединения, добавить информацию о минимальной и максимальной зарплате для каждой должности:MIN_SALARY, MAX_SALARY
 -- Из таблицы DEPARTMENTS, с использованием соединения, добавить информацию о названии отдела:DEPARTMENT_NAME
-- Отфильтровать только те записи, где SALARY находится в диапазоне от MIN_SALARY и выше, то есть сотрудники, чья зарплата не ниже минимальной для их должности.
+-- Отфильтровать только те записи, где SALARY находится в диапазоне от MIN_SALARY и выше, то есть сотрудники, чья зарплата не ниже минимальной для их должности.
 
 select a.employee_id, a.first_name, a.last_name, a.job_id, a.salary, c.min_salary, c.max_salary, a.department_id, b.department_name
 from 
