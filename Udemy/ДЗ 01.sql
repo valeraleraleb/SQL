@@ -1,23 +1,23 @@
--- 1. Выведите первые 20 строк таблицы 
+-- 1. Р’С‹РІРµСЃС‚Рё 20 РїРµСЂРІС‹С… СЃС‚СЂРѕРє
 select * from employees
 where rownum <= 20;
 
---2. Используя предложение WHERE оставьте только те строки, в которых значение поля SALARY >= 15000
+--2. РСЃРїРѕР»СЊР·СѓР№С‚Рµ СѓСЃР»РѕРІРёРµ WHERE РґР»СЏ С„РёР»СЊС‚СЂР°С†РёРё РґР°РЅРЅС‹С… РїРѕ СѓСЃР»РѕРІРёСЋ, РіРґРµ Р·РЅР°С‡РµРЅРёРµ SALARY >= 15000
 select * from EMPLOYEES
 where SALARY >= 15000;
 
--- 3. Используя оператор AND оставьте только те строки, в которых значение поля SALARY >= 7500 и значение поля JOB_ID = SA_MAN
+-- 3. РСЃРїРѕР»СЊР·СѓР№С‚Рµ СѓСЃР»РѕРІРёРµ AND РґР»СЏ С„РёР»СЊС‚СЂР°С†РёРё РґР°РЅРЅС‹С… РїРѕ СѓСЃР»РѕРІРёСЏРј, РіРґРµ Р·РЅР°С‡РµРЅРёРµ SALARY >= 7500 Рё JOB_ID = SA_MAN
 select * from employees where salary >= 7500 and job_id = 'SA_MAN';
 
--- 4. Используя оператор AND и OR оставьте только те строки, в которых соблюдено любое из указанных условий:
-	--условие 1: поле JOB_ID равно IT_PROG 
-	--условие 2: поле MANAGER_ID = 121 и JOB_ID = SH_CLERK
+-- 4. РСЃРїРѕР»СЊР·СѓР№С‚Рµ СѓСЃР»РѕРІРёСЏ AND Рё OR РґР»СЏ С„РёР»СЊС‚СЂР°С†РёРё РґР°РЅРЅС‹С… РїРѕ СЃР»РµРґСѓСЋС‰РёРј СѓСЃР»РѕРІРёСЏРј: 
+-- РЈСЃР»РѕРІРёРµ 1: РіРґРµ JOB_ID = IT_PROG 
+-- РЈСЃР»РѕРІРёРµ 2: РіРґРµ MANAGER_ID = 121 Рё JOB_ID = SH_CLERK
     
 select * from EMPLOYEES
 where job_id = 'IT_PROG' or (manager_id = 121 and JOB_ID = 'SH_CLERK');
 
---5. Выведите поля EMPLOYEE_ID, FIRST_NAME, LAST_NAME, SALARY, MANAGER_ID, DEPARTMENT_ID, оставив только строки, 
---в которых значение LAST_NAME совпадает с любым из указанных: King, Austin, Faviet, Popp, Ladwig, Seo, Rajs
+--5. Р’С‹РІРµРґРёС‚Рµ EMPLOYEE_ID, FIRST_NAME, LAST_NAME, SALARY, MANAGER_ID, DEPARTMENT_ID РґР»СЏ СЃРѕС‚СЂСѓРґРЅРёРєРѕРІ, 
+-- РіРґРµ LAST_NAME РЅРµ РІС…РѕРґРёС‚ РІ СЃРїРёСЃРѕРє: King, Austin, Faviet, Popp, Ladwig, Seo, Rajs
 
 select 
     EMPLOYEE_ID, 
@@ -29,8 +29,8 @@ select
 from employees 
 where last_name in ('King', 'Austin', 'Faviet', 'Popp', 'Ladwig', 'Seo', 'Rajs');
 
---6. Выведите поля DEPARTMENT_ID, EMPLOYEE_ID, FIRST_NAME, LAST_NAME, оставив только строки, 
---в которых значение DEPARTMENT_ID не равно: 30, 50, 60, 80, 90, 100
+--6. Р’С‹РІРµРґРёС‚Рµ DEPARTMENT_ID, EMPLOYEE_ID, FIRST_NAME, LAST_NAME РґР»СЏ СЃРѕС‚СЂСѓРґРЅРёРєРѕРІ, 
+-- РіРґРµ DEPARTMENT_ID РІС…РѕРґРёС‚ РІ СЃРїРёСЃРѕРє: 30, 50, 60, 80, 90, 100
 
 select 
     DEPARTMENT_ID, 
@@ -40,8 +40,8 @@ select
 from employees
 where department_id not in (30, 50, 60, 80, 90, 100);
 
---7. Выведите поля EMPLOYEE_ID, FIRST_NAME, LAST_NAME, SALARY, отфильтровав полученный результат по полю SALARY по убыванию (зарплата от большего к меньшему). 
---При это значения полей FIRST_NAME и LAST_NAME должны быть отображены в верхнем регистре.
+--7. Р’С‹РІРµРґРёС‚Рµ EMPLOYEE_ID, FIRST_NAME, LAST_NAME, SALARY, СѓРїРѕСЂСЏРґРѕС‡РёРІ РґР°РЅРЅС‹Рµ РїРѕ Р·РЅР°С‡РµРЅРёСЋ SALARY РІ РїРѕСЂСЏРґРєРµ СѓР±С‹РІР°РЅРёСЏ. 
+-- РўР°РєР¶Рµ РѕС‚СЃРѕСЂС‚РёСЂСѓР№С‚Рµ СЂРµР·СѓР»СЊС‚Р°С‚С‹ РїРѕ FIRST_NAME Рё LAST_NAME РІ РїРѕСЂСЏРґРєРµ РІРѕР·СЂР°СЃС‚Р°РЅРёСЏ
 
 select 
     EMPLOYEE_ID, 
